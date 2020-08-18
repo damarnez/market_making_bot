@@ -5,4 +5,4 @@ const Cron = (job, time) => {
   }, time);
 }
 
-module.export = Cron;
+module.exports = Cron;
