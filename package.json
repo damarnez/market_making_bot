@@ -1,0 +1,23 @@
+{
+  "name": "market_making_bot",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "./src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/App.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damarnez/market_making_bot.git"
+  },
+  "author": "damarnez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damarnez/market_making_bot/issues"
+  },
+  "homepage": "https://github.com/damarnez/market_making_bot#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
