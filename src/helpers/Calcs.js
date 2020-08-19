@@ -30,8 +30,8 @@ const Calcs = {
     }, { bids: [], asks: [] });
   },
   randomFloat: (from, to) => {
-    const formula = (new BigNumber(from).minus(new BigNumber(to))).plus(new BigNumber(to));
-    return BigNumber.random().multipliedBy(formula).toFixed(5);
+    // return (Math.random() * (parseFloat(from) - parseFloat(to)) + parseFloat(to)).toFixed(5)
+    return (BigNumber.random().multipliedBy(new BigNumber(from).minus(to))).plus(to).toFixed(5);
   }
 
 }

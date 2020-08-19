@@ -8,6 +8,8 @@ let BID_STORED_ORDERS = [];
 let ASK_STORED_ORDERS = [];
 
 const Orders = {
+  getBids: () => BID_STORED_ORDERS,
+  getAsks: () => ASK_STORED_ORDERS,
   newBid: (bids) => {
     const balance = Balance.get();
     const usdBalance = new BigNumber(balance.USD);
@@ -17,9 +19,11 @@ const Orders = {
     }
 
     const usdOrder = usdBalance.dividedBy(bids.length);
+
     let discard = '0';
     bids.forEach(bid => {
-      const amount = usdOrder.dividedBy(bid.value).toFixed(5);
+      const amount = usdOrder.dividedBy(bid.value).toFixed(18);
+      console.log('AMOUNT:', amount);
       BID_STORED_ORDERS.push({ price: bid.value, amount });
       const totalSpend = new BigNumber(amount).multipliedBy(bid.value);
       discard = new BigNumber(discard).plus(usdOrder.minus(totalSpend));

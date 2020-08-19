@@ -4,8 +4,8 @@
   "description": "Test",
   "main": "./src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/App.js"
+    "test": "env-cmd jest",
+    "start": "env-cmd node ./src/App.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,10 @@
   "homepage": "https://github.com/damarnez/market_making_bot#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "bignumber.js": "^9.0.0"
+    "bignumber.js": "^9.0.0",
+    "env-cmd": "^10.1.0"
+  },
+  "devDependencies": {
+    "jest": "^26.4.0"
   }
 }

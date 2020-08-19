@@ -1,3 +1,5 @@
+const defaultComparator = (a, b) => { return a - b }
+
 const QuickSort = (
   unsortedArray,
   comparator = defaultComparator

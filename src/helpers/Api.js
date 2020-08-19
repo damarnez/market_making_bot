@@ -1,15 +1,15 @@
 const Axios = require('axios');
 const CustomError = require('../utils/CustomError');
+
 const params = {
-  Symbol: "tETHUSD",
-  Precision: "P0",
+  Symbol: process.env.API_SYMBOL,
+  Precision: process.env.API_PRECISION,
 };
 
 const Api = {
   Orderbook: async () => {
     const url = `https://api.stg.deversifi.com/bfx/v2/book/${params.Symbol}/${params.Precision}`;
-    const response = await Axios(url, {
-      method: "GET",
+    const response = await Axios.get(url, {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -25,9 +25,6 @@ const Api = {
     }
   }
 };
-
-
-
 
 module.exports = Api;
 

@@ -30,13 +30,13 @@ const newAskOrders = (bestAsk) => {
 }
 
 const BestBidBestAsk = {
-  run: (orders) => {
+  run: async (orders) => {
     const { bids, asks } = Calcs.splitBidAndAsk(orders);
     const bestBid = Calcs.bestBid(bids);
     const bestAsk = Calcs.bestAsk(asks);
     const newBids = newBidOrders(bestBid);
     const newAsks = newAskOrders(bestAsk);
-    console.log(`Best BID: ${bestBid[0]} Best ASK: ${bestAsk[0]}`);
+    // console.log(`Best BID: ${bestBid[0]} Best ASK: ${bestAsk[0]}`);
 
     return {
       bids: newBids,
