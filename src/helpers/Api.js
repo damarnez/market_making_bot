@@ -2,8 +2,8 @@ const Axios = require('axios');
 const CustomError = require('../utils/CustomError');
 
 const params = {
-  Symbol: process.env.API_SYMBOL,
-  Precision: process.env.API_PRECISION,
+  Symbol: process.env.API_SYMBOL || "tETHUSD",
+  Precision: process.env.API_PRECISION || "P0",
 };
 
 const Api = {

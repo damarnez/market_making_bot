@@ -4,8 +4,8 @@
   "description": "Test",
   "main": "./src/app.js",
   "scripts": {
-    "test": "env-cmd jest",
-    "start": "env-cmd node ./src/App.js"
+    "test": "env-cmd --silent   jest",
+    "start": "env-cmd --silent  node ./src/App.js"
   },
   "repository": {
     "type": "git",
