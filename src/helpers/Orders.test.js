@@ -19,7 +19,7 @@ const FakeOrders = [
   ]
 ];
 
-xtest('shoud create a new bid', () => {
+test('shoud create a new bid', () => {
   expect(Orders.getBids().length).toBe(0);
   Orders.newBid(FakeBids);
 
@@ -27,7 +27,7 @@ xtest('shoud create a new bid', () => {
   Orders.cleanOrders();
 });
 
-xtest('shoud create a new ask', () => {
+test('shoud create a new ask', () => {
   expect(Orders.getAsks().length).toBe(0);
   Orders.newAsk(FakeAsk);
   expect(Orders.getAsks().length).toBe(3);
@@ -50,6 +50,7 @@ test('shoud remove be filled bids and asks and the balance updated', () => {
   expect(Orders.getBids().length).toBe(3);
   Orders.newAsk(newFakeAsks);
   expect(Orders.getAsks().length).toBe(3);
+
   const FakeOrdersFill = [
     [
       60,
@@ -62,11 +63,15 @@ test('shoud remove be filled bids and asks and the balance updated', () => {
       -2
     ]
   ];
+
   Orders.check(FakeOrdersFill);
   expect(Orders.getBids().length).toBe(0);
+
   const updatedBalance = Balance.get();
   expect(Orders.getBids().length).toBe(0);
+
   expect(updatedBalance.ETH).not.toBe(process.env.INIT_ETH || "10.000000000000000000");
   expect(updatedBalance.USD).not.toBe(process.env.INIT_USD || "20000.00000");
+
   Orders.cleanOrders();
 });
