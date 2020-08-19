@@ -61,13 +61,14 @@ const Orders = {
     ASK_STORED_ORDERS = ASK_STORED_ORDERS.filter((stored) => {
       const balance = Balance.get();
       if (new BigNumber(stored.price).isLessThanOrEqualTo(bestAsk[0]) && (new BigNumber(balance.ETH)).isGreaterThanOrEqualTo(stored.amount)) {
-        console.info(`FILLED ASK @ PRICE AMOUNT (ETH - ${stored.amount} USD + ${stored.price})
-        `);
+        console.info(`FILLED ASK @ PRICE AMOUNT (ETH -${stored.amount} USD +${stored.price})`);
         const balance = Balance.get();
         Balance.update({
           ETH: new BigNumber(balance.ETH).minus(stored.amount).toFixed(18),
           USD: new BigNumber(balance.USD).plus(stored.totalPrice).toFixed(5)
         });
+      } else {
+        console.info(`CANCEL ASK @ PRICE AMOUNT (ETH -${stored.amount} USD +${stored.price})`);
       }
       return;
     });
@@ -75,13 +76,14 @@ const Orders = {
     BID_STORED_ORDERS = BID_STORED_ORDERS.filter((stored) => {
       const balance = Balance.get();
       if (new BigNumber(stored.price).isGreaterThanOrEqualTo(bestBid[0]) && (new BigNumber(balance.USD)).isGreaterThanOrEqualTo(stored.totalPrice)) {
-        console.info(`FILLED BID @ PRICE AMOUNT (ETH + ${stored.amount} USD - ${stored.price})
-        `);
+        console.info(`FILLED BID @ PRICE AMOUNT (ETH + ${stored.amount} USD - ${stored.price})`);
         const balance = Balance.get();
         Balance.update({
           ETH: new BigNumber(balance.ETH).plus(stored.amount).toFixed(18),
           USD: new BigNumber(balance.USD).minus(stored.totalPrice).toFixed(5)
         });
+      } else {
+        console.info(`CANCEL BID @ PRICE AMOUNT (ETH +${stored.amount} USD -${stored.price})`);
       }
       return;
     });
