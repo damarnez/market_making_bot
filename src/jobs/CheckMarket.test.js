@@ -19,8 +19,8 @@ const FakeOrders = [
 const FakeStragegy = {
   run: async () => {
     return {
-      bids: [{ value: 100000 }, { value: 11000 }, { value: 12000 }],
-      asks: [{ value: 1 }, { value: 0.1 }, { value: 0.2 }]
+      bids: [{ value: 1 }, { value: 0.1 }, { value: 0.2 }],
+      asks: [{ value: 100000 }, { value: 11000 }, { value: 12000 }]
     };
   }
 }
@@ -34,4 +34,5 @@ test('should generate 5 bids and 5 asks', async () => {
   await CheckMarket.run([FakeStragegy])();
   expect(Orders.getBids().length).toBe(3);
   expect(Orders.getAsks().length).toBe(3);
+  Orders.cleanOrders();
 });
