@@ -1,9 +1,10 @@
+const BigNumber = require('bignumber.js');
 const INIT_ETH = 10;
-const INIT_USDT = 20000;
+const INIT_USD = 20000;
 
 let BALANCE = {
-  'ETH': INIT_ETH,
-  'USD': INIT_USDT
+  'ETH': new BigNumber(INIT_ETH).toFixed(18), // Eth have 18 decimals
+  'USD': new BigNumber(INIT_USD).toFixed(5) // USD we use 5 decimals
 }
 
 const Balance = {
